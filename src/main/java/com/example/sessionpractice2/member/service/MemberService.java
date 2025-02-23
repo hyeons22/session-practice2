@@ -45,9 +45,6 @@ public class MemberService {
 
     @Transactional
     public void deleteById(Long memberId) {
-        if(!memberRepository.existsById(memberId)){
-            throw new IllegalArgumentException("멤버가 존재하지 않습니다.");
-        }
         memberRepository.deleteById(memberId);
     }
 }

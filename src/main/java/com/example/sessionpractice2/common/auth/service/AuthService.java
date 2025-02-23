@@ -15,6 +15,10 @@ public class AuthService {
     private final MemberRepository memberRepository;
 
     public void signup(AuthSignupRequestDto requestDto) {
+        if(requestDto.getEmail() == null || requestDto.getPassword() == null){
+            throw new IllegalArgumentException("이메일 또는 비밀번호를 입력해주세요");
+        }
+
         Member member = new Member(requestDto.getEmail(), requestDto.getPassword());
         Member savedMember = memberRepository.save(member);
     }
