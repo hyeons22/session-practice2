@@ -48,9 +48,10 @@ public class MemberService {
                 () -> new IllegalArgumentException("그런 멤버 없어요")
         );
 
-        member.update(member.getEmail(), member.getPassword());
+        member.update(requestDto.getEmail(), requestDto.getPassword());
     }
 
+    @Transactional
     public void deleteById(Long memberId) {
         if(!memberRepository.existsById(memberId)){
             throw new IllegalArgumentException("멤버가 존재하지 않습니다.");
